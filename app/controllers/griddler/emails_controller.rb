@@ -14,9 +14,9 @@ class Griddler::EmailsController < ActionController::Base
   private :processor_class, :processor_method, :email_service
 
   def normalized_params
-    puts "====="
-    puts params
-    puts "====="
+    Rails.logger.log "====="
+    Rails.logger.log params
+    Rails.logger.log "====="
     Array.wrap(email_service.normalize_params(params || {}))
   end
 
