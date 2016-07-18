@@ -14,7 +14,8 @@ class Griddler::EmailsController < ActionController::Base
   private :processor_class, :processor_method, :email_service
 
   def normalized_params
-    Array.wrap(email_service.normalize_params(request.body))
+    params = JSON.parse(request.body)
+    Array.wrap(email_service.normalize_params(params)
   end
 
   def process_email(email)
